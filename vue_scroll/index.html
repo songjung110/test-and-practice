@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>Admin</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="./assets/css/design.css" />
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    </head>
+    <body>
+        <script type="text/javascript" src="./vue/scroll.vue.js"></script>
+        <div id="wrap" class="appContainer">
+            <div id="container">
+                <!-- 본문 컨텐츠 -->
+                <div id="content">
+                    <h2 id="page_title">TEST</h2>
+                    <div class="wrap" ref="contentWrap">
+                        <!-- 본문 컨텐츠 -->
+                        <div class="contents">
+                            <div class="wrap">
+                                <div class="ui_row">
+                                    <div class="wrap is-cols-pad">
+                                        <div class="ui_col w12">
+                                            <div class="ui_box">
+                                                <div class="header">
+                                                    <h3><span>scroll bar</span></h3>
+                                                </div>
+                                                <div class="content">
+                                                    <comp-scroll v-model="dragValue"></comp-scroll>
+                                                    {{ dragValue }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // 본문 컨텐츠 -->
+                    </div>
+                </div>
+                <!-- // 본문 컨텐츠 -->
+            </div>
+        </div>
+        <script>
+            var datas = {
+                // GNB IDX
+                gnbIdx: '0000',
+
+                // Scroll Left Value
+                scrollLeft: 0,
+
+                // Aside Left Position
+                sideLeft: 0,
+            };
+            var pageDatas = JSON.parse(JSON.stringify(datas));
+
+            // GNB IDX
+            pageDatas.gnbIdx = '0501';
+
+            pageDatas.dragValue = { x: 10, x2: 70 };
+
+            var app = new Vue({
+                el: '#wrap.appContainer',
+                data: pageDatas,
+            });
+        </script>
+
+        <!-- Vue Container 선언 -->
+    </body>
+</html>

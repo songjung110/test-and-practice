@@ -27,12 +27,23 @@ FormView.bindEvents = function () {
     this.inputEl.addEventListener('keyup', (e) => this.onKeyup(e));
 };
 FormView.onKeyup = function () {
+    const enter = 13;
     this.showResetBtn(this.inputEl.value.length); // length 0 값 자체가 false 로 계산되는 js라서 이렇게 처리가 가능한듯!!
+    if (e.keyCode !== enter) return;
+    // 여기까지 따라 쓰면서 ..................  form에 들어가야할 "기능"은 전부 FormView.js 안에서만 쓰여야만함
+    // [추측임]
+    // 1. 디버깅을 편하게 하기 위해?
+    // 2. 코드의 깔끔함을 위해
+    // 3. 유지보수 할 때에도 편할거같음 form 을 안쓴다는 조건 하에 해당하는 import만 주석처리 하면 되니까 ????
+
+    this.emit('@submit', { input: this.inputEl.value });
+    /*
+        ★★ 이벤트 구현 시 "기능"이 "해당 "엘리먼트 (또는 컴포넌트)" 에서 
+             직접 작용하는 기능인지 재고 해본 후 기능을 구현해야함
+             위와같이 enter keyup이 이루어졌을때 "검색 영역이 열리는 기능"은 
+             FormView.js 에서의 역할이 아니므로 enter keyup의 작동만 
+             MainController.js 로 보내주면 된다.
+     */
 };
-// 여기까지 따라 쓰면서 ..................  form에 들어가야할 "기능"은 전부 FormView.js 안에서만 쓰여야만함
-// [추측임]
-// 1. 디버깅을 편하게 하기 위해?
-// 2. 코드의 깔끔함을 위해
-// 3. 유지보수 할 때에도 편할거같음 form 을 안쓴다는 조건 하에 해당하는 import만 주석처리 하면 되니까 ????
 
 export default FormView;

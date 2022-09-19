@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+// 영역 스크롤
+.dcp_scroll {
+    user-select: none;
+    .scroll {
+        margin: 0 auto;
+        position: relative;
+        width: 100%;
+        height: 10px;
+        background: #dddddd;
+        border-radius: 10px;
+        .bar {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background: #999999;
+            z-index: 0;
+
+            &:after {
+                content: '';
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+            }
+            &.active {
+                background: #555555;
+            }
+        }
+        .bullet {
+            display: block;
+            position: absolute;
+            top: -5px;
+            background: #888888;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            border-radius: 50%;
+            z-index: 1;
+            color: #ffffff;
+            cursor: pointer;
+            user-select: none;
+            &.b_one {
+                left: 0;
+                margin-left: -10px;
+            }
+            &.b_two {
+                right: 0;
+                margin-left: -10px;
+            }
+            &.active {
+                background: #000000;
+            }
+        }
+    }
+}
