@@ -51,13 +51,8 @@ var comp = Vue.component('comp-scroll', {
         startDrag: function (e) {
             this.dragging = true;
             var _this = this;
-
             this.target = e.target;
 
-            console.log(this.$refs.bOne.getBoundingClientRect().left + 10 - this.$refs.scroll.getBoundingClientRect().left);
-            console.log(this.$refs.bOne.getBoundingClientRect().left);
-            // var leftPxPosition = $(this.$refs.bOne).css('left');
-            // var rightPxPosition = $(this.$refs.bTwo).css('left');
             var leftPxPosition = this.$refs.bOne.getBoundingClientRect().left + 10 - this.$refs.scroll.getBoundingClientRect().left;
             var rightPxPosition = this.$refs.bTwo.getBoundingClientRect().left + 10 - this.$refs.scroll.getBoundingClientRect().left;
 
