@@ -1,14 +1,37 @@
 import FormView from '../views/FormView.js';
+import ResultView from '../views/ResultView.js';
+import SearchModel from '../models/SearchModel.js';
 const tag = '[MainController]';
 
 export default {
     // export 안에 감싸야지 import 한 파일에서 불러와짐
     init() {
-        // console.log(tag, 'init()'); //FormView.js 에 써놓은 tag명에 대한 추측이 이게 맞나
         FormView.setup(document.querySelector('form')) // >  FormView.js 에서 setup
-            .on('@submit', (e) => this.onSubmit(e.detail.input));
+            .on('@submit', (e) => this.onSubmit(e.detail.input)) // 1. FormView 엔터 발생 시 실행
+            .on('@reset', (e) => this.onResetForm());
+
+        ResultView.setup(document.querySelector('#search-result'));
     },
-    onsubmit(input) {
+    search(query) {
+        // 3. 실행 시
+        console.log(tag, 'search()', query);
+        // search api
+        // 실제 search api를 통해 데이터를 얻어옴
+        SearchModel.list(query).then((data) => {
+            this.onSearchResult(data); // 그 데이터를 받아서 함수 실행
+        });
+        // this.onSearchResult([]); // 그 데이터를 받아서 함수 실행
+    },
+    onSubmit(input) {
+        //2.실행 시
         console.log(tag, 'onsubmit()', input);
+        this.search(input); // 2-1. 검색 요청을 위해 search 실행
+    },
+    onResetForm() {
+        console.log(tag, 'onResetForm()');
+    },
+    onSearchResult(data) {
+        // 4. 실행
+        ResultView.render(data); // 4-1 . 데이터를 받아서 ResultView의 render 함수로 넘겨줌
     },
 };
