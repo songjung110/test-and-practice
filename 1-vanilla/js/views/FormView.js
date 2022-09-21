@@ -21,6 +21,7 @@ FormView.setup = function (el) {
     return this;
 };
 FormView.showResetBtn = function (show = true) {
+    // X버튼을 클릭하면 검색폼이 초기화 되고, 검색 결과가 사라진다.
     this.resetEl.style.display = show ? 'block' : 'none';
 };
 FormView.bindEvents = function () {
@@ -48,7 +49,7 @@ FormView.onKeyup = function (e) {
      */
 };
 FormView.onClickReset = function () {
-    this.emit('@reset');
+    this.emit('@reset'); // 클릭됨을 @reset으로 MainController.js에 알림
     this.showResetBtn(false);
 };
 

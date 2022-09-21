@@ -29,6 +29,7 @@ export default {
     },
     onResetForm() {
         console.log(tag, 'onResetForm()');
+        ResultView.hide(); // form의 reset 버튼 클릭시 검색결과 리스트 끔.
     },
     onSearchResult(data) {
         // 4. 실행
