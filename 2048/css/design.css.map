@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,SAAS,CAAT,OAAS;AAET,AAAA,IAAI,CAAC;EACD,UAAU,EAAE,IAAI;CACnB",
+    "sources": [
+        "design.scss",
+        "_color.scss"
+    ],
+    "names": [],
+    "file": "design.css"
+}
