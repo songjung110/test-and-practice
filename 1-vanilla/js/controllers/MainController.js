@@ -1,6 +1,8 @@
 import FormView from '../views/FormView.js';
 import ResultView from '../views/ResultView.js';
 import SearchModel from '../models/SearchModel.js';
+import TabView from '../views/TabView.js';
+
 const tag = '[MainController]';
 
 export default {
@@ -10,7 +12,11 @@ export default {
             .on('@submit', (e) => this.onSubmit(e.detail.input)) // 1. FormView 엔터 발생 시 실행
             .on('@reset', (e) => this.onResetForm());
 
+        TabView.setup(document.querySelector('#tabs'));
         ResultView.setup(document.querySelector('#search-result'));
+
+        this.selectedTab = '추천 검색어';
+        TabView.setActiveTabs(this.selectedTab);
     },
     search(query) {
         // 3. 실행 시
