@@ -8,7 +8,6 @@ TabView.setup = function (el) {
 };
 
 TabView.setActiveTabs = function (tabName) {
-    console.log(this);
     Array.from(this.el.querySelectorAll('li')).forEach((li) => {
         li.className = li.innerHTML === tabName ? 'active' : '';
     });
